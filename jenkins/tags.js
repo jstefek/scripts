@@ -1,7 +1,7 @@
 function getLatestTag() {
 
     // send ajax request to github api to get all tags from richfaces-qa repository.
-    $.ajax({
+    jQuery.ajax({
         url: 'https://api.github.com/repos/richfaces/richfaces-qa/tags',
         dataType: 'json',
         type: 'get'
