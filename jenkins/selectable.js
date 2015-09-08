@@ -1,4 +1,4 @@
-function selectable(className, $input, appendable, replacement) {
+function selectable(className, $input, appendable, replacement, noDuplicates) {
     var elems = jQuery('.' + className);
     elems.each(function (i, e) {
         var $e = jQuery(e);
@@ -8,11 +8,14 @@ function selectable(className, $input, appendable, replacement) {
                 if (evt.shiftKey || evt.ctrlKey) {
                     var valueBefore = $input.val();
                     if (!!valueBefore) {
+                        var toSetReplaced = toSet;
                         if (!!replacement) {
-                            toSet = valueBefore + ',' + toSet.replace(replacement, "");
-                        } else {
-                            toSet = valueBefore + ',' + toSet;
+                            toSetReplaced = toSet.replace(replacement, "");
                         }
+                        if (!!noDuplicates && valueBefore.indexOf(toSetReplaced) !== -1) {
+                            return;
+                        }
+                        toSet = valueBefore + ',' + toSetReplaced;
                     }
                 }
             }
