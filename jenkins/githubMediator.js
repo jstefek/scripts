@@ -42,7 +42,7 @@ var githubMediator = function () {
                 var latestTMP = 1;
                 var str = '';
                 var begin = /\d\.\d\./;
-                var end = /-.*/;
+                var end = /[-\.].*/;
                 for (var i = 0; i < names.length; i++) {
                     // replace beginning and end of the string
                     str = names[i].replace(begin, '').replace(end, '');
