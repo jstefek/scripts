@@ -41,12 +41,12 @@ var githubMediator = function () {
                 var latest = 1;
                 var latestTMP = 1;
                 var str = '';
-                var begin = /4.5./;
+                var begin = /\d\.\d\./;
                 var end = /-.*/;
                 for (var i = 0; i < names.length; i++) {
                     // replace beginning and end of the string
                     str = names[i].replace(begin, '').replace(end, '');
-                    if (latestTMP < str) {
+                    if (new Number(latestTMP) < new Number(str)) {
                         latestTMP = str;
                         latest = names[i];
                     }
